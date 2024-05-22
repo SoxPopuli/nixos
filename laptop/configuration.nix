@@ -99,35 +99,6 @@ in
     description = "Charlotte";
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.fish;
-    packages = with pkgs; [
-      git
-      curl
-      wget
-      firefox
-      kate
-      neovim
-      keepassxc
-      dropbox
-      dropbox-cli
-      wezterm
-      tmux
-      eza
-      cargo
-      yarn
-      unzip
-      gcc
-      tree-sitter
-      nodejs_20
-      dotnet-sdk_8
-      luajitPackages.luarocks
-      ripgrep
-      fd
-
-      # LSPs
-      lua-language-server
-      nil
-      stylua
-    ];
   };
 
   programs.fish.enable = true;
@@ -140,6 +111,7 @@ in
   environment.systemPackages = with pkgs; [
     git
     vim
+    neovim
     wget
     xclip
   ];
