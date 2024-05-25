@@ -4,12 +4,13 @@
 
 { config, pkgs, ... }:
 
-let 
+let
   locale = "en_GB.UTF-8";
 in
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
