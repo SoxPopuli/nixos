@@ -2,10 +2,11 @@
   "nodes": {
     "dotfiles": {
       "locked": {
-        "dirtyRev": "4fdbcf97cf92263368bedacf532a37c1b74acd81-dirty",
-        "dirtyShortRev": "4fdbcf9-dirty",
-        "lastModified": 1716680707,
-        "narHash": "sha256-UdqpVWFUxAlCZsdgtE+Jh6AJdFvn+ox++m2Zef2ViF4=",
+        "lastModified": 1716771916,
+        "narHash": "sha256-MWPaeRdORiEme+/4NjpRJTl4zd666zC6STJL2BB+lEg=",
+        "ref": "refs/heads/main",
+        "rev": "e6af7fe821c9e03cae08455db86d2794116d76cb",
+        "revCount": 67,
         "type": "git",
         "url": "file:///etc/nixos/dotfiles"
       },
