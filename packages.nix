@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, pkgs-23_11, ... }: {
   config.environment.systemPackages = with pkgs; [
     cargo
     curl
@@ -13,7 +13,6 @@
     keepassxc
     luajitPackages.luarocks
     lua-language-server
-    neovim
     nil
     nodejs_20
     ripgrep
@@ -24,5 +23,7 @@
     wezterm
     wget
     yarn
+  ] ++ [
+    pkgs-23_11.neovim
   ];
 }

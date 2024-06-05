@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-23_11.url = "github:NixOS/nixpkgs/nixos-23.11";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -11,12 +12,15 @@
     dotfiles.url = "git+file:///etc/nixos/dotfiles";
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, dotfiles, ... }:
+  outputs = inputs@{ self, nixpkgs, nixpkgs-23_11, home-manager, dotfiles, ... }:
     {
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
-      nixosConfigurations.nixos-laptop = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.nixos-laptop = nixpkgs.lib.nixosSystem rec {
         system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
+        specialArgs = { 
+          inherit inputs; 
+          pkgs-23_11 = nixpkgs-23_11.legacyPackages.${system};
+        };
         modules = [
           ./laptop/configuration.nix
           ./dotnet.nix

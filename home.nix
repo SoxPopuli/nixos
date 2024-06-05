@@ -14,20 +14,25 @@ in
   home.packages = with pkgs; [
     nnn # terminal file manager
 
+    obsidian # note taking tool
+
     # utils
-    ripgrep # recursively searches directories for a regex pattern
-    jq # A lightweight and flexible command-line JSON processor
     eza # A modern replacement for ‘ls’
     fzf # A command-line fuzzy finder
+    jq # A lightweight and flexible command-line JSON processor
+    ripgrep # recursively searches directories for a regex pattern
 
     # misc
     file
-    which
-    tree
+    gawk
+    gnumake
     gnused
     gnutar
-    gawk
+    tree
+    which
 
+    python3
+    rust-analyzer
     # nix related
     #
     # it provides the command `nom` works just like `nix`
@@ -57,10 +62,6 @@ in
     {
       ".config/fish/completions" = "fish/completions";
       ".config/fish/functions" = "fish/functions";
-      ".config/nvim" = "nvim";
-      ".config/kitty" = "kitty";
-      ".config/tmux" = "tmux";
-      ".config/wezterm" = "wezterm";
     };
 
   # This value determines the home Manager release that your
