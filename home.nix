@@ -39,11 +39,21 @@ in
     # with more details log output
     nix-output-monitor
 
+    typescript
   ];
 
   home.sessionVariables = {
     fish_config_dir = "/etc/nixos/dotfiles/fish";
   };
+
+  # ts server alias for neovim
+  home.file.".local/bin/typescript-language-server" = {
+    source = "${pkgs.nodePackages.typescript-language-server}/bin/typescript-language-server";
+  };
+
+  home.sessionPath = [
+    "$HOME/.local/bin"
+  ];
 
   # basic configuration of git, please change to your own
   programs.git = {
@@ -57,12 +67,15 @@ in
     shellInitLast = "source ${configDir}/fish/config.fish";
   };
 
-  home.file = builtins.mapAttrs
-    (name: value: { source = "${configDir}/${value}"; recursive = true; })
-    {
-      ".config/fish/completions" = "fish/completions";
-      ".config/fish/functions" = "fish/functions";
-    };
+  home.file.".config/fish/completions" = {
+    source = "${configDir}/fish/completions";
+    recursive = true;
+  };
+
+  home.file.".config/fish/functions" = {
+    source = "${configDir}/fish/functions";
+    recursive = true;
+  };
 
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage

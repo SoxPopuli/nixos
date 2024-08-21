@@ -46,12 +46,18 @@ in
     LC_TIME = locale;
   };
 
+  virtualisation.docker.enable = true;
+
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
+  services.xserver.windowManager.i3 = {
+    enable = true;
+    package = pkgs.i3-gaps;
+  };
 
   # Configure keymap in X11
   services.xserver = {
@@ -67,7 +73,7 @@ in
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  sound.enable = true;
+  #sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -98,9 +104,22 @@ in
   users.users.charlotte = {
     isNormalUser = true;
     description = "Charlotte";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     shell = pkgs.fish;
   };
+
+  #systemd.user.services.plasma-kwin_x11.enable = false;
+  #systemd.user.services.plasma-i3-wm = {
+  #  description = "Plasma with i3";
+  #  path = with pkgs; [ i3-gaps ];
+  #  wantedBy = [ "plasma-workspace.target" ];
+  #  before = [ "plasma-workspace.target" ];
+  #  serviceConfig = {
+  #    ExecStart = "i3";
+  #    Slice = "session.slice";
+  #    Restart = "on-failure";
+  #  };
+  #};
 
   programs.fish.enable = true;
 
