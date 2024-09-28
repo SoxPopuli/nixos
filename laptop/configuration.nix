@@ -123,6 +123,8 @@ in
 
   programs.fish.enable = true;
 
+  programs.openvpn3.enable = true; # For aws vpn
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 

@@ -31,10 +31,19 @@ let
     pyright
     neovim
     direnv
+    marksman
+
+    avalonia-ilspy # DotNet Decompiler
+
+    wezterm 
+    mitmproxy
+  ];
+
+  flakePackages = [
+    awsvpnclient
   ];
 
   oldPackages = with pkgs-23_11; [
-    wezterm #Fails to compile for Rust 1.81
     awscli2
   ];
 in
@@ -56,8 +65,8 @@ in
     unzip
     wget
     zoxide
-    awsvpnclient
   ]
+  ++ flakePackages
   ++ oldPackages
   ++ devPackages;
 }
