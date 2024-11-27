@@ -5,7 +5,12 @@ let
     rustup
     cargo
     gcc
+
+    cmake
+
     git
+    git-absorb
+
     nil
     zip
     nodejs_20
@@ -33,10 +38,14 @@ let
     direnv
     marksman
 
+    taplo
+
     avalonia-ilspy # DotNet Decompiler
 
     wezterm 
     mitmproxy
+
+    lutris
   ];
 
   flakePackages = [
@@ -55,15 +64,22 @@ in
     eza
     fd
     firefox
+    htop
     kate
     keepassxc
     lua
     luajitPackages.luarocks
+    mpv
+    p7zip
     ripgrep
     stylua
     tmux
+    tor-browser
+    transmission_4
+    transmission_4-qt
     unzip
     wget
+    wine64
     zoxide
   ]
   ++ flakePackages

@@ -125,6 +125,11 @@ in
 
   programs.openvpn3.enable = true; # For aws vpn
 
+  programs.steam = {
+    enable = true;
+    remotePlay = { openFirewall = true; };
+  };
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -136,6 +141,7 @@ in
     neovim
     wget
     xclip
+    ps
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
